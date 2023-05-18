@@ -6,11 +6,9 @@ def is_number(string):
         return False
 
 
-
 def convert_number(string):
     if is_number(string):
         return float(string)
-
 
 
 def ask_for_number(force_valid_input):
@@ -23,17 +21,15 @@ def ask_for_number(force_valid_input):
         print("This didn't look like a number, try again.")
 
 
-
 def is_valid_operator(operator):
-    if operator in ["+","-","*","/"]:
+    if operator in ["+", "-", "*", "/"]:
         return True
     return False
 
 
-
 def ask_for_an_operator(force_valid_input):
     while True:
-        operator =input("Please provide an operator (one of +, -, *, /): ")
+        operator = input("Please provide an operator (one of +, -, *, /): ")
         if is_valid_operator(operator):
             return operator
         else:
@@ -42,17 +38,16 @@ def ask_for_an_operator(force_valid_input):
             print("Unknown operator.")
 
 
-
-def calc(operator,a,b):
+def calc(operator, a, b):
     result = None
     if not is_valid_operator(operator) or not is_number(a) or not is_number(b):
         return result
     elif operator == "+":
-            result = a + b
+        result = a + b
     elif operator == "-":
-            result = a - b
+        result = a - b
     elif operator == "*":
-            result = a * b
+        result = a * b
     elif operator == "/":
         try:
             result = a / b
@@ -60,17 +55,19 @@ def calc(operator,a,b):
             print("Division by zero ")
     return result
 
+
 def simple_calculator():
     while True:
         a = ask_for_number(force_valid_input=False)
         if a is None:
             exit()
         else:
-            operator = ask_for_an_operator(force_valid_input = True)
+            operator = ask_for_an_operator(force_valid_input=True)
             b = ask_for_number(force_valid_input=True)
-            result = calc(operator,a,b)
+            result = calc(operator, a, b)
             if result is not None:
                 print(f'The result is {result}.')
+
 
 if __name__ == "__main__":
     simple_calculator()
